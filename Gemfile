@@ -4,6 +4,7 @@ ruby '2.6.2'
 
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
+gem 'dotenv'
 gem 'rake'
 gem 'rerun'
 gem 'rubocop'
