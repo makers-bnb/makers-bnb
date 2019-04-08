@@ -13,12 +13,13 @@ class MakersBnB < Sinatra::Base
     erb :'spaces/new'
   end
 
-  post '/spaces/new' do
+  post '/spaces' do
     session[:name] = params[:name]
     session[:description] = params[:description]
     session[:price] = params[:price]
+    redirect '/spaces'
   end
-  
+
   post '/user' do
     user = User.create(email: params[:email],
                        password: params[:password])
@@ -27,6 +28,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
+    p session
     @name = session[:name]
     @description = session[:description]
     @price = session[:price]

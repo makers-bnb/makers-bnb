@@ -1,1 +1,4 @@
+<% unless @user.nil? %>
+<p>New account created with email: <%= @user.email %></p>
+<% end %>
 <%= "#{@name}: #{@description}: £#{@price} per night" %>
