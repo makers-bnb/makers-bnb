@@ -51,3 +51,7 @@
   > As a landlord  
   > So I can take my pick of the best renters  
   > I want my space to be available until booking is confirmed
+
+## Domain modelling
+
+<img src='./img/IMG_20190408_122312.jpg' width=400><img src='./img/IMG_20190408_123214.jpg' width=400>
