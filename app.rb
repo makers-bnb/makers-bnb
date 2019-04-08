@@ -4,10 +4,21 @@ require_relative 'lib/connect_to_database'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
+
   get '/' do
     erb :index
   end
 
+  get '/spaces/new' do
+    erb :'spaces/new'
+  end
+
+  post '/spaces/new' do
+    session[:name] = params[:name]
+    session[:description] = params[:description]
+    session[:price] = params[:price]
+  end
+  
   post '/user' do
     user = User.create(email: params[:email],
                        password: params[:password])
@@ -16,10 +27,12 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    user = User.get(session[:user_id])
-    "New account created with email: #{user.email}"
+    @name = session[:name]
+    @description = session[:description]
+    @price = session[:price]
+    @user = User.get(session[:user_id])
+    erb :spaces
   end
 
   run! if app_file == $0
 end
-
