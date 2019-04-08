@@ -28,13 +28,17 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    p session
     @name = session[:name]
     @description = session[:description]
     @price = session[:price]
     @user = User.get(session[:user_id])
     erb :spaces
   end
+
+  get '/logout' do
+    session.clear
+    "Goodbye!"
+  end 
 
   run! if app_file == $0
 end
