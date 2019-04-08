@@ -4,6 +4,6 @@ feature 'Signing up' do
     fill_in 'email', :with => 'johnnylandlord@landlords.com'
     fill_in 'password', :with => 'moneymoneymoney'
     click_button 'Sign up!'
-    expect(page).to have_content 'New account created'
+    expect(page).to have_content 'New account created with email: johnnylandlord@landlords.com'
   end
 end
