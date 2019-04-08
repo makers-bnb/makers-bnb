@@ -5,6 +5,6 @@ class Space
 
   property :id,          Serial
   property :name,        String,     :required => true
-  property :description, String,     :required => true
+  property :description, Text,       :required => true, lazy: false
   property :price,       Integer,    :required => true
 end
