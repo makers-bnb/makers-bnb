@@ -7,6 +7,7 @@ gem 'dm-postgres-adapter'
 gem 'rake'
 gem 'rerun'
 gem 'rubocop'
+gem 'rubocop-performance'
 gem 'sinatra'
 
 group :test do
