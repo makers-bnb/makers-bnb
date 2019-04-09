@@ -13,10 +13,13 @@
 </head>
 
 <body class="container">
-  <div class="content row">
+  <div class="content ">
 
-    <header class="align-self-center">
-      <menu>
+    <header class="row">
+      <div class="col">
+        <h1>Makers B&amp;B</h1>
+      </div>
+      <menu class="col">
         <ul>
           <li>
             <a href="/requests">Requests</a>
@@ -35,13 +38,12 @@
           </li>
         </ul>
       </menu>
-      <h1>Makers B&amp;B</h1>
     </header>
-    <main class="align-self-center">
+    <main class="row">
       <%= yield %>
     </main>
   </div>
-  <footer class="site-footer align-self-center">
+  <footer class="site-footer row">
   </footer>
 </body>
 </html>

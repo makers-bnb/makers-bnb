@@ -1,9 +1,13 @@
 <% unless @user.nil? %>
-<p>User: <%= @user.email %></p>
+<div class="alert alert-primary col-12">
+  User: <%= @user.email %>
+</div>
 <% end %>
 
-<h3>Available spaces:</h3>
-<div id="available-spaces">
+<div class="col-12">
+  <h2>Available spaces</h2>
+</div>
+<div id="available-spaces" class="col-12">
   <ul>
   <% @spaces.each do |space| %>
     <%# <div class="card" style="width: 24rem;"> %>

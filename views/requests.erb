@@ -1,33 +1,36 @@
-<h2>Your requests</h2>
+<section id="my-requests" class="col-12 requests-list">
+  <h2>Your requests</h2>
 
-<ul>
-<% @my_requests.each do |request| %>
-  <% space = Space.get(request.space_id) %>
-  <div class="card" style="width: 36rem;">
-  <div class="card-body">
-  <li>
-    Name: <%= space.name %><br>
-    Date: <%= request.date %><br>
-    Status: <%= request.status %>
-  </li>
-<% end %>
-</ul>
+  <% @my_requests.each do |request| %>
+    <% space = Space.get(request.space_id) %>
+    <div class="card">
+      <div class="card-body">
+        Name: <%= space.name %><br>
+        Date: <%= request.date %><br>
+        Status: <%= request.status %>
+      </div>
+    </div>
+  <% end %>
 
-<h2>Requests for your spaces</h2>
+</section>
 
-<ul>
-<% @requests_against_my_spaces.each do |request| %>
-  <% space = Space.get(request.space_id) %>
-  <% user = User.get(request.user_id) %>
-  <li>
-    Space: <%= space.name %><br>
-    Date: <%= request.date %><br>
-    Status: <%= request.status %><br>
-    Requesting User: <%= user.email %><br>
-    <form action='/requests/<%= request.id %>' method='POST'>
-      <input type="submit" name= 'status' value="Accept Booking">
-      <input type="submit" name= 'status' value="Reject Booking">
-    </form>
-  </li>
-<% end %>
-</ul>
+<section id="requests-on-my-listings" class="col-12 requests-list">
+  <h2>Requests for your spaces</h2>
+
+  <% @requests_against_my_spaces.each do |request| %>
+    <% space = Space.get(request.space_id) %>
+    <% user = User.get(request.user_id) %>
+    <div class="card">
+      <div class="card-body">
+        Space: <%= space.name %><br>
+        Date: <%= request.date %><br>
+        Status: <%= request.status %><br>
+        Requesting User: <%= user.email %><br>
+        <form action='/requests/<%= request.id %>' method='POST'>
+          <input type="submit" name= 'status' value="Accept Booking">
+          <input type="submit" name= 'status' value="Reject Booking">
+        </form>
+      </div>
+  <% end %>
+
+</section>

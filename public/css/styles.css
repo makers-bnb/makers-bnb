@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
   font-family: 'Alfa Slab One', cursive;
 }
 
@@ -7,19 +7,21 @@ html {
 }
 
 body {
-  background-image: url(https://www.telegraph.co.uk/content/dam/Travel/2016/July/car-survive-AP-TRAVEL.jpg?imwidth=1100);
+  background-image: url(../img/happy-family.webp);
   background-size: cover;
 }
 
-.content {
-  max-width: 1000px;
+header {
+  margin: 20px 0; 
+  width: 100%;
 }
+
 menu  {
   margin: 0;
   padding: 10px;
 }
 
-menu  ul {
+menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -28,12 +30,17 @@ menu  ul {
 
 menu li {
   float: right;
+  margin-left: 20px;
+}
+.card {
+  background-color: rgba(255 ,255 ,255 , .92);
 }
 
-#sign-up-form {
-  padding: 20px;
-  width: 500px;
+.form {
+  padding: 0;
+  width: 30rem;
 }
+
 #available-spaces ul {
   padding: 0;
 }
@@ -48,19 +55,6 @@ menu li {
   margin-bottom: 10px;
 }
 
-li a {
-  display: block;
-  color: #666;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #ddd;
-}
-
-li a.active {
-  color: white;
-  background-color: #4CAF50;
+.requests-list {
+  margin-bottom: 20px;
 }
