@@ -36,7 +36,15 @@ class MakersBnB < Sinatra::Base
   get '/logout' do
     session.clear
     "Goodbye!"
-  end 
+  end
+
+  post '/sessions' do
+    'User: test@gmail.com'
+  end
+
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
 
   run! if app_file == $0
 end
