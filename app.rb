@@ -33,5 +33,10 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
+  get '/logout' do
+    session.clear
+    "Goodbye!"
+  end 
+
   run! if app_file == $0
 end

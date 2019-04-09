@@ -8,7 +8,7 @@ if ENV['RACK_ENV'] == 'test'
     "postgres://#{user}@localhost/makers_bnb_test")
 else
   DataMapper.setup(:default,
-    "postgres://#{user}@localhost/makers_bnb")
+    "postgres://#{user}@localhost/makers_bnb"
 end
 
 DataMapper.finalize
