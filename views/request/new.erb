@@ -1,9 +1,14 @@
-<h2><%= @space.name %></h2>
-
-<section><%= @space.description %></section>
-
-<form action="/requests" method="post">
-    <input type="hidden" name="space_id" value="<%= @space.id %>">
-    <input type="date" name="booking_date">
-    <input class="btn btn-primary" type="submit" value="Request to book">
-</form>
+<div id="new-request-form" class="card col-6 ml-md-auto mr-md-auto form">
+    <div class="card-body">
+        <h2><%= @space.name %></h2>
+        <div><%= @space.description %></div>
+        <form action="/requests" method="post">
+            <input type="hidden" name="space_id" value="<%= @space.id %>">
+            <div class="form-group">
+                <label for="booking_date">Booking date</label>
+                <input type="date" class="form-control" id="booking_date" name="booking_date">
+            </div>
+            <button type="submit" class="btn btn-primary">Request to book</button>
+        </form>
+    </div>
+</div>
