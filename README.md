@@ -1,5 +1,8 @@
 # Makers B'n'B
 
+- *[Specification](https://github.com/makersacademy/course/blob/master/makersbnb/specification_and_mockups.md)*  
+- *[Mockups](https://github.com/makersacademy/course/blob/master/makersbnb/makers_bnb_images/MakersBnB_mockups.pdf)*
+
 ## Installation
 
 1. Clone repo
