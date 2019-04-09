@@ -20,3 +20,10 @@ def add_space(name, description, price)
   fill_in 'price', with: price
   click_button 'Submit'
 end
+
+def make_request(date)
+  visit '/spaces'
+  click_link 'Request to book'
+  fill_in 'booking_date', with: date
+  click_button 'Request to book'
+end

@@ -1,13 +1,27 @@
-<% puts "inside requests.erb" %>
-<h2>Your requests</h2>
+<h2>Your Requests to book</h2>
 
 <ul>
-<% @requests.each do |request| %>
+<% @my_requests.each do |request| %>
   <% space = Space.get(request.space_id) %>
   <li>
     Name: <%= space.name %><br>
     Date: <%= request.date %><br>
     Status: <%= request.status %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Requests for your spaces</h2>
+
+<ul>
+<% @requests_against_my_spaces.each do |request| %>
+  <% space = Space.get(request.space_id) %>
+  <% user = User.get(request.user_id) %>
+  <li>
+    Space: <%= space.name %><br>
+    Date: <%= request.date %><br>
+    Status: <%= request.status %><br>
+    Requesting User: <%= user.email %>
   </li>
 <% end %>
 </ul>
