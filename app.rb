@@ -40,19 +40,20 @@ class MakersBnB < Sinatra::Base
     @user = User.get(session[:user_id])
     erb :"request/new"
   end
-  
+
   post '/requests' do
     @space = Space.get(params[:space_id])
     @user = User.get(session[:user_id])
-    request = Request.create(space: @space,
-                             user: @user,
-                             date: params[:booking_date])
+    Request.create(space: @space,
+                   user: @user,
+                   date: params[:booking_date])
     redirect '/requests'
   end
 
   get '/requests' do
     @requests = Request.all(user_id: session[:user_id])
     erb :requests
+  end
 
   get '/logout' do
     session.clear

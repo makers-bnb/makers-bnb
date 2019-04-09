@@ -1,8 +1,8 @@
-require 'sign_up_create_space_sign_up_again_helper'
-
 feature 'Request a booking' do
   scenario 'a user can visit the booking page for a space' do
-    sign_up_create_space_sign_up_again
+    user_sign_up('johnnylandlord@landlords.com', 'moneymoneymoney')
+    add_space("Bob's Bunker", 'My bunker is amazing', '50')
+    user_sign_up('billyrenter@renters.com', 'love2rent')
     visit '/spaces'
     click_link 'Request to book'
     expect(page).to have_content "Bob's Bunker"
@@ -10,7 +10,9 @@ feature 'Request a booking' do
   end
 
   scenario "a user can request a booking for one night" do
-    sign_up_create_space_sign_up_again
+    user_sign_up('johnnylandlord@landlords.com', 'moneymoneymoney')
+    add_space("Bob's Bunker", 'My bunker is amazing', '50')
+    user_sign_up('billyrenter@renters.com', 'love2rent')
     visit '/spaces'
     click_link 'Request to book'
     fill_in 'booking_date', with: "2020-07-22"
@@ -19,5 +21,4 @@ feature 'Request a booking' do
     expect(page).to have_content "2020-07-22"
     expect(page).to have_content "Pending"
   end
-
 end
