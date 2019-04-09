@@ -7,17 +7,16 @@
   <title>Makers BnB</title>
   <meta name="description" content="So much better than Air BnB">
   <meta name="author" content="a bunch of people">
-  <link rel="stylesheet" href="css/bootstrap.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/bootstrap.css">
   <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
   <link href="/css/styles.css" rel="stylesheet">
 </head>
 
-<%# <body background="https://www.telegraph.co.uk/content/dam/Travel/2016/July/car-survive-AP-TRAVEL.jpg?imwidth=1100"> %>
 <body class="container">
-  <div class="content">
+  <div class="content row">
 
-    <header>
+    <header class="align-self-center">
       <menu>
         <ul>
           <li>
@@ -37,11 +36,11 @@
       </menu>
       <h1>Makers B&amp;B</h1>
     </header>
-    <main>
+    <main class="align-self-center>
       <%= yield %>
     </main>
   </div>
-  <footer class="site-footer">
+  <footer class="site-footer align-self-center">
   </footer>
 </body>
 </html>
