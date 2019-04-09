@@ -59,6 +59,12 @@ class MakersBnB < Sinatra::Base
     erb :requests
   end
 
+  post '/requests/:req_id' do
+    status = params[:status] == 'Accept Booking' ? 'Confirmed' : 'Rejected'
+    Request.first(id: params[:req_id]).update(status: status)
+    redirect '/requests'
+  end
+
   get '/logout' do
     session.clear
     redirect '/sessions/new'
