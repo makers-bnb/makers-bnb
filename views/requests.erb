@@ -1,7 +1,7 @@
 <h2>Your requests</h2>
 
 <ul>
-<% @requests.each do |request| %>
+<% @my_requests.each do |request| %>
   <% space = Space.get(request.space_id) %>
   <div class="card" style="width: 36rem;">
   <div class="card-body">
@@ -9,6 +9,25 @@
     Name: <%= space.name %><br>
     Date: <%= request.date %><br>
     Status: <%= request.status %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Requests for your spaces</h2>
+
+<ul>
+<% @requests_against_my_spaces.each do |request| %>
+  <% space = Space.get(request.space_id) %>
+  <% user = User.get(request.user_id) %>
+  <li>
+    Space: <%= space.name %><br>
+    Date: <%= request.date %><br>
+    Status: <%= request.status %><br>
+    Requesting User: <%= user.email %><br>
+    <form action='/requests/<%= request.id %>' method='POST'>
+      <input type="submit" name= 'status' value="Accept Booking">
+      <input type="submit" name= 'status' value="Reject Booking">
+    </form>
   </li>
 <% end %>
 </ul>

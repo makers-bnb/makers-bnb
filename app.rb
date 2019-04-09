@@ -16,9 +16,11 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces' do
+    user = User.get(session[:user_id])
     Space.create(name: params[:name],
                  description: params[:description],
-                 price: params[:price])
+                 price: params[:price],
+                 user: user)
     redirect '/spaces'
   end
 
@@ -51,8 +53,16 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests' do
-    @requests = Request.all(user_id: session[:user_id])
+    @my_requests = Request.all(user_id: session[:user_id])
+    my_spaces = Space.all(user_id: session[:user_id])
+    @requests_against_my_spaces = Request.all(:space => my_spaces)
     erb :requests
+  end
+
+  post '/requests/:req_id' do
+    status = params[:status] == 'Accept Booking' ? 'Confirmed' : 'Rejected'
+    Request.first(id: params[:req_id]).update(status: status)
+    redirect '/requests'
   end
 
   get '/logout' do
