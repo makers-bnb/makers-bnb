@@ -21,7 +21,11 @@
     Space: <%= space.name %><br>
     Date: <%= request.date %><br>
     Status: <%= request.status %><br>
-    Requesting User: <%= user.email %>
+    Requesting User: <%= user.email %><br>
+    <form action='/requests/<%= request.id %>' method='POST'>
+      <input type="submit" name= 'status' value="Accept Booking">
+      <input type="submit" name= 'status' value="Reject Booking">
+    </form>
   </li>
 <% end %>
 </ul>
