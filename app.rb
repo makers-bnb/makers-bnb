@@ -16,7 +16,9 @@ class MakersBnB < Sinatra::Base
 
   post '/spaces' do
     puts 'inside post /spaces'
-    Space.create(name: params[:name], description: params[:description], price: params[:price])
+    Space.create(name: params[:name],
+                 description: params[:description],
+                 price: params[:price])
     redirect '/spaces'
   end
 
@@ -35,11 +37,17 @@ class MakersBnB < Sinatra::Base
 
   get '/logout' do
     session.clear
-    "Goodbye!"
+    redirect '/sessions/new'
   end
 
   post '/sessions' do
-    'User: test@gmail.com'
+    user = User.log_in(params[:email], params[:password])
+    if user.nil?
+      redirect '/sessions/new'
+    else
+      session[:user_id] = user.id
+      redirect '/spaces'
+    end
   end
 
   get '/sessions/new' do

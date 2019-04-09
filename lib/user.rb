@@ -9,7 +9,6 @@ class User
 
   def self.log_in(email, password)
     user = User.first(email: email)
-    error_msg = 'Email or Password is incorrect'
-    user.nil? || user.password != password ? raise(error_msg) : user
+    user.nil? || user.password != password ? nil : user
   end
 end
