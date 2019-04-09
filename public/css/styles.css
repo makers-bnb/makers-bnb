@@ -1,0 +1,66 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Alfa Slab One', cursive;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background-image: url(https://www.telegraph.co.uk/content/dam/Travel/2016/July/car-survive-AP-TRAVEL.jpg?imwidth=1100);
+  background-size: cover;
+}
+
+.content {
+  max-width: 1000px;
+}
+menu  {
+  margin: 0;
+  padding: 10px;
+}
+
+menu  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+menu li {
+  float: right;
+}
+
+#sign-up-form {
+  padding: 20px;
+  width: 500px;
+}
+#available-spaces ul {
+  padding: 0;
+}
+#available-spaces li {
+  list-style: none;
+}
+.space {
+  background-color: rgba(255 ,255 ,255 , .92);
+  margin-bottom: 20px;
+}
+.space-details {
+  margin-bottom: 10px;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: #4CAF50;
+}

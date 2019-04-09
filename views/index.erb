@@ -1,9 +1,15 @@
-<h2>Sign up</h2>
-
-<form action="/user" method="post">
-    <input type="text" name="email">
-    <input type="password" name="password">
-    <input type="submit" value="Sign up!">
-</form>
-
-<a name="log_in" href="/sessions/new">Log in</a> 
+<div id="sign-up-form" class="card container">
+    <h2>Sign up</h2>
+    <form action="/user" method="post">
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" name="email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="pasword" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Sign up!</button>
+    </form>
+</div>
