@@ -1,9 +1,10 @@
-<% puts "inside requests.erb" %>
 <h2>Your requests</h2>
 
 <ul>
 <% @requests.each do |request| %>
   <% space = Space.get(request.space_id) %>
+  <div class="card" style="width: 36rem;">
+  <div class="card-body">
   <li>
     Name: <%= space.name %><br>
     Date: <%= request.date %><br>

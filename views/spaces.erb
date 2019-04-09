@@ -2,14 +2,21 @@
 <p>User: <%= @user.email %></p>
 <% end %>
 
-
-<ul>
-<% @spaces.each do |space| %>
-  <li>
-    Name: <%= space.name %><br>
-    Description: <%= space.description %><br>
-    Price Per Night: £<%= space.price %><br>
-    <a href="/requests/new/<%= space.id %>">Request to book</a>
-  </li>
-<% end %>
-</ul>
+<h3>Available spaces:</h3>
+<div id="available-spaces">
+  <ul>
+  <% @spaces.each do |space| %>
+    <%# <div class="card" style="width: 24rem;"> %>
+      <li class="space card">
+        <section class="card-body">
+          <h3><%= space.name %></h3>
+          <div class="space-details">
+            <section><%= space.description %></section>
+            <div>Price per night: £<%= space.price %></div>
+          </div>
+          <a class="btn btn-primary active" href="/requests/new/<%= space.id %>">Request to book</a>
+        </section>
+      </li>
+  <% end %>
+  </ul>
+</div>
