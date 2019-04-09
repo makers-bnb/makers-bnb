@@ -1,5 +1,18 @@
 # Makers B'n'B
- 
+
+## Installation
+
+1. Clone repo
+2. `bundle install`
+3. Copy `.env-example` to `.env` and update it with your Postgres username
+4. Create your databases, `makers_bnb` and `makers_bnb_test`
+5. Start the server with `rackup`
+6. Navigate to [localhost:9292](http://localhost:9292/)
+
+## Tests
+
+Run tests with `RSpec` in project root
+
 ## Headline specifications
 - Any signed-up user can list a new space.
   > As a landlord  
