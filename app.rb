@@ -16,7 +16,9 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces' do
-    Space.create(name: params[:name], description: params[:description], price: params[:price])
+    Space.create(name: params[:name],
+                 description: params[:description],
+                 price: params[:price])
     redirect '/spaces'
   end
 
@@ -51,6 +53,24 @@ class MakersBnB < Sinatra::Base
   get '/requests' do
     @requests = Request.all(user_id: session[:user_id])
     erb :requests
+
+  get '/logout' do
+    session.clear
+    redirect '/sessions/new'
+  end
+
+  post '/sessions' do
+    user = User.log_in(params[:email], params[:password])
+    if user.nil?
+      redirect '/sessions/new'
+    else
+      session[:user_id] = user.id
+      redirect '/spaces'
+    end
+  end
+
+  get '/sessions/new' do
+    erb :'sessions/new'
   end
 
   run! if app_file == $0
