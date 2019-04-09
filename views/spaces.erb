@@ -8,7 +8,8 @@
   <li>
     Name: <%= space.name %><br>
     Description: <%= space.description %><br>
-    Price Per Night: £<%= space.price %>
+    Price Per Night: £<%= space.price %><br>
+    <a href="/requests/new/<%= space.id %>">Request to book</a>
   </li>
 <% end %>
 </ul>

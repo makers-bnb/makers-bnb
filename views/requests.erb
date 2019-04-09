@@ -1,0 +1,13 @@
+<% puts "inside requests.erb" %>
+<h2>Your requests</h2>
+
+<ul>
+<% @requests.each do |request| %>
+  <% space = Space.get(request.space_id) %>
+  <li>
+    Name: <%= space.name %><br>
+    Date: <%= request.date %><br>
+    Status: <%= request.status %>
+  </li>
+<% end %>
+</ul>

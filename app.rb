@@ -1,6 +1,7 @@
 require 'sinatra/base'
-require_relative 'lib/user'
+require_relative 'lib/request'
 require_relative 'lib/space'
+require_relative 'lib/user'
 require_relative 'lib/connect_to_database'
 
 class MakersBnB < Sinatra::Base
@@ -15,7 +16,6 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces' do
-    puts 'inside post /spaces'
     Space.create(name: params[:name],
                  description: params[:description],
                  price: params[:price])
@@ -34,6 +34,25 @@ class MakersBnB < Sinatra::Base
     @user = User.get(session[:user_id])
     erb :spaces
   end
+
+  get '/requests/new/:id' do
+    @space = Space.get(params[:id])
+    @user = User.get(session[:user_id])
+    erb :"request/new"
+  end
+  
+  post '/requests' do
+    @space = Space.get(params[:space_id])
+    @user = User.get(session[:user_id])
+    request = Request.create(space: @space,
+                             user: @user,
+                             date: params[:booking_date])
+    redirect '/requests'
+  end
+
+  get '/requests' do
+    @requests = Request.all(user_id: session[:user_id])
+    erb :requests
 
   get '/logout' do
     session.clear
