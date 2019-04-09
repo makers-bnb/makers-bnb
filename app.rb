@@ -37,8 +37,8 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
-  get '/requests/new/:id' do
-    @space = Space.get(params[:id])
+  get '/requests/new/:space_id' do
+    @space = Space.get(params[:space_id])
     @user = User.get(session[:user_id])
     erb :"request/new"
   end
