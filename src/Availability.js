@@ -12,6 +12,6 @@ Availability.dateConversion = function(date) {
 
 Availability.prototype.dateAvailable = function(date) {
   var dateString = Availability.dateConversion(date);
-  var datesArray = Availability.datesToArray(this.datesString)
-  return !datesArray.includes(dateString);
+  var datesArray = Availability.datesToArray(this.datesString);
+  return [!datesArray.includes(dateString)];
 };

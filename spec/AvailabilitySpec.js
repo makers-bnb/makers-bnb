@@ -23,11 +23,11 @@ describe("Availability", function() {
   describe('date to array', function () {
     it("should return true if date is not array", function () {
       var date = new Date('Wed Apr 10 2019 06:00:00 GMT+0100');
-      expect(availability.dateAvailable(date)).toEqual(true);
+      expect(availability.dateAvailable(date)).toEqual([true]);
     });
     it("should return false if date is in array", function () {
       var date = new Date('Wed Apr 21 2019 06:00:00 GMT+0100');
-      expect(availability.dateAvailable(date)).toEqual(false);
+      expect(availability.dateAvailable(date)).toEqual([false]);
     });
   });
 });
