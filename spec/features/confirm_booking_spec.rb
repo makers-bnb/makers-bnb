@@ -1,7 +1,7 @@
 feature 'Confirm booking' do
   scenario 'I can go to /requests and see requests against my spaces' do
     user_sign_up('firstUser@gmail.com', '123')
-    add_space('My Place','Amazing flat', '50')
+    add_space('My Place', 'Amazing flat', '50')
     click_link('Log out')
     user_sign_up('secondUser@gmail.com', '123')
     make_request('2019-04-09')

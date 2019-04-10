@@ -1,7 +1,7 @@
 feature 'Booked dates are unavailable' do
   scenario "Dates which are already booked should appear in a data attribute on the date picker" do
     user_sign_up('landlord@landlord', 'password')
-    add_space('My flat', 'Is a very nice flat', '99', '2020-05-01' ,'2020-05-20')
+    add_space('My flat', 'Is a very nice flat', '99', '2020-05-01', '2020-05-20')
     click_link('Log out')
     user_sign_up('renter@renter', 'password')
     make_request('2020-05-03')
