@@ -21,6 +21,7 @@
       </div>
       <menu class="col">
         <ul>
+          <% if logged_in? %>
           <li>
             <a href="/requests">Requests</a>
           </li>
@@ -30,12 +31,15 @@
           <li>
             <a href="/logout">Log out</a>
           </li>
+          <% end %>
+          <% if not_logged_in? %>
           <li>
             <a name="log_in" href="/sessions/new">Log in</a>
           </li>
           <li>
             <a href="/">Sign up</a>
           </li>
+          <% end %>
         </ul>
       </menu>
     </header>
