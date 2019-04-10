@@ -6,7 +6,7 @@
             <input type="hidden" name="space_id" value="<%= @space.id %>">
             <div class="form-group">
                 <label for="booking_date">Booking date</label>
-                <input type="date" class="form-control" id="booking_date" name="booking_date">
+                <input type="date" class="form-control" id="booking_date" name="booking_date" min='<%= @space.start_date %>' max='<%= @space.end_date %>'>
             </div>
             <button type="submit" class="btn btn-primary">Request to book</button>
         </form>
