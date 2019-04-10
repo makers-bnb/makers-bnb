@@ -16,7 +16,7 @@
 <body class="container">
   <div class="content ">
 
-    <header class="row">
+    <header class="row no-gutters">
       <div class="col">
         <h1>Makers B&amp;B</h1>
       </div>
@@ -45,6 +45,12 @@
       </menu>
     </header>
     <main class="row">
+      <% flash.keys.each do |type| %>
+        <div data-alert class="col-12 alert alert-<%= type %> alert-box radius">
+          <%= flash[type] %>
+          <!-- <a href="#" class="close">&times;</a> -->
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </div>
