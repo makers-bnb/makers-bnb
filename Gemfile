@@ -14,6 +14,7 @@ gem 'sinatra'
 group :test do
   gem 'capybara'
   gem 'capybara-selenium'
+  gem 'launchy'
   gem 'rspec'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false

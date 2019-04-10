@@ -1,7 +1,7 @@
 feature 'Confirm booking' do
   scenario 'I can go to /requests and see requests against my spaces' do
     user_sign_up('firstUser@gmail.com', '123')
-    add_space('My Place','Amazing flat', '50')
+    add_space('My Place', 'Amazing flat', '50')
     click_link('Log out')
     user_sign_up('secondUser@gmail.com', '123')
     make_request('2019-04-09')
@@ -22,7 +22,7 @@ feature 'Confirm booking' do
     click_link('Log out')
     user_log_in('firstUser@gmail.com', '123')
     visit '/requests'
-    click_button 'Accept Booking'
+    click_button 'Accept booking'
     expect(page).to have_content('Confirmed')
     expect(page).to have_content('My Place')
     expect(page).to have_content('2019-04-09')
@@ -37,7 +37,7 @@ feature 'Confirm booking' do
     click_link('Log out')
     user_log_in('firstUser@gmail.com', '123')
     visit '/requests'
-    click_button 'Reject Booking'
+    click_button 'Reject booking'
     expect(page).to have_content('Rejected')
     expect(page).to have_content('My Place')
     expect(page).to have_content('2019-04-09')

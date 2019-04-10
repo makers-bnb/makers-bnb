@@ -27,7 +27,7 @@ feature 'Request a booking' do
     user_sign_up('billyrenter@renters.com', 'love2rent')
     visit '/spaces'
     click_link 'Request to book'
-    expect(find('#booking_date')['min']).to eq('2019-04-20')
-    expect(find('#booking_date')['max']).to eq('2019-04-29')
+    expect(find('#request_date_picker')['min']).to eq('2019-04-20')
+    expect(find('#request_date_picker')['max']).to eq('2019-04-29')
   end
 end
