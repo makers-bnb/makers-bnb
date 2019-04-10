@@ -7,6 +7,7 @@ Availability.datesToArray = function(datesString) {
 };
 
 Availability.dateConversion = function(date) {
+  date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   return date.toISOString().substring(0, 10);
 };
 

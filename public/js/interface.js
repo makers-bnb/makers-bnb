@@ -3,7 +3,7 @@ $(document).ready(function() {
   var availability = new Availability(datesString);
   var availability_bound = availability.dateAvailable.bind(availability)
 
-  console.log($('#request_date_picker'))
+  $('#request_date_picker')
   $('#request_date_picker').datepicker({
     minDate: new Date(2019, 0, 1),
     maxDate: new Date(2019, 5, 31),
