@@ -1,10 +1,12 @@
 require 'sinatra/base'
+require_relative 'app/helpers/users'
 require_relative 'lib/request'
 require_relative 'lib/space'
 require_relative 'lib/user'
 require_relative 'lib/connect_to_database'
 
 class MakersBnB < Sinatra::Base
+  include Sinatra::UsersHelpers
   enable :sessions
 
   get '/' do
@@ -12,11 +14,12 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/new' do
+    @user = current_user
     erb :'spaces/new'
   end
 
   post '/spaces' do
-    user = User.get(session[:user_id])
+    user = current_user
     Space.create(name: params[:name],
                  description: params[:description],
                  price: params[:price],
@@ -35,19 +38,19 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @spaces = Space.all
-    @user = User.get(session[:user_id])
+    @user = current_user
     erb :spaces
   end
 
   get '/requests/new/:space_id' do
     @space = Space.get(params[:space_id])
-    @user = User.get(session[:user_id])
+    @user = current_user
     erb :"request/new"
   end
 
   post '/requests' do
     @space = Space.get(params[:space_id])
-    @user = User.get(session[:user_id])
+    @user = current_user
     Request.create(space: @space,
                    user: @user,
                    date: params[:booking_date])
@@ -83,6 +86,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/sessions/new' do
+    @user = current_user
     erb :'sessions/new'
   end
 
