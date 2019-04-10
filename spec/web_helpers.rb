@@ -13,11 +13,13 @@ def user_log_in(email, password)
   click_button 'Log in'
 end
 
-def add_space(name, description, price)
+def add_space(name, description, price, start_date = '2019-04-20', end_date = '2099-04-20')
   visit '/spaces/new'
   fill_in 'name', with: name
   fill_in 'description', with: description
   fill_in 'price', with: price
+  fill_in 'start_date', with: start_date
+  fill_in 'end_date', with: end_date
   click_button 'Submit'
 end
 
