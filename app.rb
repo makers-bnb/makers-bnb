@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative 'app/helpers/users'
+require_relative 'app/helpers/requests'
 require_relative 'lib/request'
 require_relative 'lib/space'
 require_relative 'lib/user'
@@ -7,6 +8,7 @@ require_relative 'lib/connect_to_database'
 
 class MakersBnB < Sinatra::Base
   include Sinatra::UsersHelpers
+  include Sinatra::RequestsHelpers
   enable :sessions
 
   get '/' do
@@ -44,6 +46,13 @@ class MakersBnB < Sinatra::Base
 
   get '/requests/new/:space_id' do
     @space = Space.get(params[:space_id])
+    @confirmed_requests = Request.all(status: 'Confirmed',
+                                      space_id: params[:space_id])
+    @booked_dates = Request.all(status: 'Confirmed',
+                                space_id: params[:space_id])
+    # p @booked_dates.first.date
+    # request = @booked_dates.first
+    # p request
     @user = current_user
     erb :"request/new"
   end
@@ -65,7 +74,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/requests/:req_id' do
-    status = params[:status] == 'Accept Booking' ? 'Confirmed' : 'Rejected'
+    status = params[:status] == 'Accept booking' ? 'Confirmed' : 'Rejected'
     Request.first(id: params[:req_id]).update(status: status)
     redirect '/requests'
   end

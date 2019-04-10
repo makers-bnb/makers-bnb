@@ -22,7 +22,7 @@ feature 'Confirm booking' do
     click_link('Log out')
     user_log_in('firstUser@gmail.com', '123')
     visit '/requests'
-    click_button 'Accept Booking'
+    click_button 'Accept booking'
     expect(page).to have_content('Confirmed')
     expect(page).to have_content('My Place')
     expect(page).to have_content('2019-04-09')
@@ -37,7 +37,7 @@ feature 'Confirm booking' do
     click_link('Log out')
     user_log_in('firstUser@gmail.com', '123')
     visit '/requests'
-    click_button 'Reject Booking'
+    click_button 'Reject booking'
     expect(page).to have_content('Rejected')
     expect(page).to have_content('My Place')
     expect(page).to have_content('2019-04-09')
