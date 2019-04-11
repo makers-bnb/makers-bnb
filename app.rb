@@ -40,10 +40,18 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/user' do
+    if params[:email] == ''
+      flash[:danger] = "Could not create user. No email address given."
+      redirect '/'
+    end
+    if params[:password] == ''
+      flash[:danger] = "Could not create user. No password given."
+      redirect '/'
+    end
     user = User.create(email: params[:email],
                        password: params[:password])
     if user.id.nil?
-      flash[:danger] = "Could not create user."
+      flash[:danger] = "Could not create user. User already exists."
       redirect '/'
     end
     session[:user_id] = user.id
