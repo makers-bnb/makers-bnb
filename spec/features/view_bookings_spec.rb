@@ -7,7 +7,7 @@ feature "Requests page" do
     click_link 'Request to book'
     fill_in 'booking_date', with: "2020-07-22"
     click_button 'Request to book'
-    click_link 'Log out'
+    click_button 'Log out'
     user_log_in('landlord@landlord.com', 'password')
     click_link 'Requests'
     expect(page).not_to have_content "Your requests"
