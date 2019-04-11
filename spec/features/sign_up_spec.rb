@@ -17,6 +17,6 @@ feature 'Signing up' do
   scenario 'An error is shown if the account already exists' do
     user_sign_up('johnnylandlord@landlords.com', 'moneymoneymoney')
     user_sign_up('johnnylandlord@landlords.com', 'moneymoneymoney')
-    expect(page).to have_content 'Could not create user. User already exists.'
+    expect(page).to have_content 'User already exists.'
   end
 end
