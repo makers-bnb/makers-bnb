@@ -68,6 +68,12 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
 
+  delete '/spaces/filter' do
+    session[:start_date] = nil
+    session[:end_date] = nil
+    redirect '/spaces'
+  end
+
   get '/requests/new/:space_id' do
     @space = Space.get(params[:space_id])
     @confirmed_requests = Request.all(status: 'Confirmed',

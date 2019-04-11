@@ -10,6 +10,10 @@
     <input type="date" name="end_date">
     <input type="submit" value="Filter">
   </form>
+  <form action="/spaces/filter" method="post">
+    <input type="hidden" name="_method" value='DELETE'>
+    <input type="submit" value="Clear">
+  </form>
 </div>
 <section id="available-spaces" class="col-12">
   <% @spaces.each do |space| %>
