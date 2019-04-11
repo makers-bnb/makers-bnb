@@ -1,3 +1,4 @@
+require 'pony'
 require 'sinatra/base'
 require_relative 'app/helpers/users'
 require_relative 'app/helpers/requests'
@@ -97,6 +98,14 @@ class MakersBnB < Sinatra::Base
   get '/sessions/new' do
     @user = current_user
     erb :'sessions/new'
+  end
+
+  get '/email' do
+    Pony.mail :to => params[:recommendee],
+              :from => 'recommendation@makersbnb.co.uk',
+              :subject => 'Welcome to Makers B&B',
+              :body => 'Your friend has recommended..'
+    redirect '/spaces'
   end
 
   run! if app_file == $0
