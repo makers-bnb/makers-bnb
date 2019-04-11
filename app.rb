@@ -31,7 +31,8 @@ class MakersBnB < Sinatra::Base
                          end_date: params[:end_date],
                          user: user)
     if space.id.nil?
-      flash[:danger] = "Could not create listing."
+      flash[:danger] = "Could not create listing. All fields are required."
+      redirect '/spaces/new'
     else
       flash[:success] = "New listing created."
     end
