@@ -14,8 +14,8 @@ class Space
   belongs_to :user
 
   def self.filter_spaces(start_date, end_date)
-    start_date = start_date.nil? ? Date.new(1900, 01, 01) : Date.strptime(start_date, "%Y-%m-%d")
-    end_date = end_date.nil? ? Date.new(2200, 01, 01) : Date.strptime(end_date, "%Y-%m-%d")
+    start_date = start_date.nil? || start_date.empty? ? Date.new(1900, 01, 01) : Date.strptime(start_date, "%Y-%m-%d")
+    end_date = end_date.nil? || end_date.empty? ? Date.new(2200, 01, 01) : Date.strptime(end_date, "%Y-%m-%d")
     spaces = Space.all
     filtered_spaces = []
     spaces.each do |space|

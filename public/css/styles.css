@@ -1,4 +1,4 @@
-h1, h2, h3 {
+h1, h2, h3, h5 {
   font-family: 'Alfa Slab One', cursive;
 }
 
@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  margin: 20px 0; 
+  margin: 20px 0;
   width: 100%;
 }
 
@@ -57,4 +57,13 @@ menu li {
 
 .space.card, .request.card {
   margin-bottom: 20px;
+}
+
+#availability-filter-dates {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  margin-right: 5px;
+}
+#availability-filter-dates input {
+  margin-right: 5px;
 }

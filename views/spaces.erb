@@ -4,15 +4,18 @@
 <div class="col-3">
   <a href="/spaces/new" class="float-right btn btn-primary">Add a new listing</a>
 </div>
-<div>
-  <form action="/spaces/filter" method="post">
-    <input type="date" name="start_date">
-    <input type="date" name="end_date">
-    <input type="submit" value="Filter">
-  </form>
-  <form action="/spaces/filter" method="post">
-    <input type="hidden" name="_method" value='DELETE'>
-    <input type="submit" value="Clear">
+<div id="availability-filter-dates" class='col-12'>
+  <h5>Filter Spaces for your desired dates:</h5>
+  <form class='form-inline' action="/spaces/filter" method="post">
+    <div class="form-group">
+      <input class='form-control' type="date" name="start_date">
+      <input class='form-control' type="date" name="end_date">
+      <input class="btn btn-primary" type="submit" value="Filter">
+      <form class='form-inline' action="/spaces/filter" method="post">
+        <input type="hidden" name="_method" value='DELETE'>
+        <input class="btn btn-primary" type="submit" value="Clear">
+      </form>
+    </div>
   </form>
 </div>
 <section id="available-spaces" class="col-12">

@@ -30,5 +30,12 @@ describe Space do
       spaces1 = Space.filter_spaces(nil, nil)
       expect(spaces1.length).to eq 2
     end
+    it 'should return return all spaces if date inputs are both empty strings' do
+      user = User.create(email: 'email', password: 'password')
+      Space.create(name: "Paul's Bunker", description: 'Come stay in my amazing bunker', price: '50', start_date: '2019-04-01', end_date: '2019-04-10', user: user)
+      Space.create(name: "Paul's Shed", description: 'Come stay in my amazing shed', price: '40', start_date: '2019-04-11', end_date: '2019-04-15', user: user)
+      spaces1 = Space.filter_spaces('', '')
+      expect(spaces1.length).to eq 2
+    end
   end
 end
