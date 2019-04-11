@@ -40,12 +40,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/user' do
-    if params[:email] == ''
-      flash[:danger] = "Could not create user. No email address given."
-      redirect '/'
-    end
-    if params[:password] == ''
-      flash[:danger] = "Could not create user. No password given."
+    if params[:email] == '' || params[:password] == ''
+      flash[:danger] = "Could not create user. All fields are required."
       redirect '/'
     end
     user = User.create(email: params[:email],
