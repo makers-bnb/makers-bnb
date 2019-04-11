@@ -81,6 +81,11 @@ class MakersBnB < Sinatra::Base
 
   get '/logout' do
     session.clear
+    redirect '/session'
+  end
+
+  delete '/session' do
+    session.clear
     redirect '/sessions/new'
   end
 
