@@ -50,9 +50,6 @@ class MakersBnB < Sinatra::Base
                                       space_id: params[:space_id])
     @booked_dates = Request.all(status: 'Confirmed',
                                 space_id: params[:space_id])
-    # p @booked_dates.first.date
-    # request = @booked_dates.first
-    # p request
     @user = current_user
     erb :"request/new"
   end

@@ -6,7 +6,11 @@
             <input type="hidden" name="space_id" value="<%= @space.id %>">
             <div class="form-group">
                 <label for="booking_date">Booking date</label>
-                <input type="text" id="request_date_picker" data-booked-dates="<%= booked_dates_string(@confirmed_requests) %>" class="form-control" name="booking_date" min='<%= @space.start_date %>' max='<%= @space.end_date %>' placeholder='yyyy-mm-dd'>
+                <input type="text" id="request_date_picker"
+                       data-availability-start="<%= @space.start_date %>"
+                       data-availability-end="<%= @space.end_date %>"
+                       data-booked-dates="<%= booked_dates_string(@confirmed_requests) %>"
+                       class="form-control" name="booking_date">
             </div>
             <button type="submit" class="btn btn-primary">Request to book</button>
         </form>
