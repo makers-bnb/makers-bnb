@@ -1,37 +1,41 @@
-<section id="my-requests" class="col-12 requests-list">
-  <h2>Your requests</h2>
+<% if @requests_against_my_spaces.length > 0 %>
+  <section id="requests-on-my-listings" class="col-12 requests-list">
+    <h2>Requests for your spaces</h2>
 
-  <% @my_requests.each do |request| %>
-    <% space = Space.get(request.space_id) %>
-    <div class="request card">
-      <div class="card-body">
-        Name: <%= space.name %><br>
-        Date: <%= request.date %><br>
-        Status: <%= request.status %>
+    <% @requests_against_my_spaces.each do |request| %>
+      <% space = Space.get(request.space_id) %>
+      <% user = User.get(request.user_id) %>
+      <div class="request card">
+        <div class="card-body">
+          Space: <%= space.name %><br>
+          Date: <%= request.date %><br>
+          Status: <%= request.status %><br>
+          Requesting User: <%= user.email %><br>
+          <form action='/requests/<%= request.id %>' method='POST'>
+            <button type="submit" class="btn btn-success" name='status' value="Accept booking">Accept booking</button>
+            <button type="submit" class="btn btn-danger" name='status' value="Reject booking">Reject booking</button>
+          </form>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-</section>
+  </section>
+<% end %>
 
-<section id="requests-on-my-listings" class="col-12 requests-list">
-  <h2>Requests for your spaces</h2>
+<% if @my_requests.length > 0 %>
+  <section id="my-requests" class="col-12 requests-list">
+    <h2>Your requests</h2>
 
-  <% @requests_against_my_spaces.each do |request| %>
-    <% space = Space.get(request.space_id) %>
-    <% user = User.get(request.user_id) %>
-    <div class="request card">
-      <div class="card-body">
-        Space: <%= space.name %><br>
-        Date: <%= request.date %><br>
-        Status: <%= request.status %><br>
-        Requesting User: <%= user.email %><br>
-        <form action='/requests/<%= request.id %>' method='POST'>
-          <button type="submit" class="btn btn-success" name='status' value="Accept booking">Accept booking</button>
-          <button type="submit" class="btn btn-danger" name='status' value="Reject booking">Reject booking</button>
-        </form>
+    <% @my_requests.each do |request| %>
+      <% space = Space.get(request.space_id) %>
+      <div class="request card">
+        <div class="card-body">
+          Name: <%= space.name %><br>
+          Date: <%= request.date %><br>
+          Status: <%= request.status %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-</section>
+  </section>
+<% end %>
