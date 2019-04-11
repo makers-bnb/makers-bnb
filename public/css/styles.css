@@ -55,6 +55,6 @@ menu li {
   margin-bottom: 10px;
 }
 
-.requests-list {
+.space.card, .request.card {
   margin-bottom: 20px;
 }

@@ -10,6 +10,7 @@ gem 'rerun'
 gem 'rubocop'
 gem 'rubocop-performance'
 gem 'sinatra'
+gem 'sinatra-flash'
 
 group :test do
   gem 'capybara'

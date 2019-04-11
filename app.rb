@@ -1,15 +1,17 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative 'app/helpers/users'
 require_relative 'app/helpers/requests'
 require_relative 'lib/request'
 require_relative 'lib/space'
 require_relative 'lib/user'
-require_relative 'lib/connect_to_database'
+require_relative 'app/connect_to_database'
 
 class MakersBnB < Sinatra::Base
+  enable :sessions
+  register Sinatra::Flash
   include Sinatra::UsersHelpers
   include Sinatra::RequestsHelpers
-  enable :sessions
 
   get '/' do
     erb :index
@@ -22,19 +24,34 @@ class MakersBnB < Sinatra::Base
 
   post '/spaces' do
     user = current_user
-    Space.create(name: params[:name],
-                 description: params[:description],
-                 price: params[:price],
-                 start_date: params[:start_date],
-                 end_date: params[:end_date],
-                 user: user)
+    space = Space.create(name: params[:name],
+                         description: params[:description],
+                         price: params[:price],
+                         start_date: params[:start_date],
+                         end_date: params[:end_date],
+                         user: user)
+    if space.id.nil?
+      flash[:danger] = "Could not create listing. All fields are required."
+      redirect '/spaces/new'
+    else
+      flash[:success] = "New listing created."
+    end
     redirect '/spaces'
   end
 
   post '/user' do
+    if params[:email] == '' || params[:password] == ''
+      flash[:danger] = "Could not create user. All fields are required."
+      redirect '/'
+    end
     user = User.create(email: params[:email],
                        password: params[:password])
+    if user.id.nil?
+      flash[:danger] = "Could not create user. User already exists."
+      redirect '/'
+    end
     session[:user_id] = user.id
+    flash[:success] = "Hello #{user.email}."
     redirect '/spaces'
   end
 
@@ -50,9 +67,6 @@ class MakersBnB < Sinatra::Base
                                       space_id: params[:space_id])
     @booked_dates = Request.all(status: 'Confirmed',
                                 space_id: params[:space_id])
-    # p @booked_dates.first.date
-    # request = @booked_dates.first
-    # p request
     @user = current_user
     erb :"request/new"
   end
@@ -87,9 +101,11 @@ class MakersBnB < Sinatra::Base
   post '/sessions' do
     user = User.log_in(params[:email], params[:password])
     if user.nil?
+      flash[:danger] = "Invalid login details."
       redirect '/sessions/new'
     else
       session[:user_id] = user.id
+      flash[:success] = "Hello #{user.email}."
       redirect '/spaces'
     end
   end

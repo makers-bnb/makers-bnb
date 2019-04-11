@@ -3,7 +3,7 @@
 
   <% @my_requests.each do |request| %>
     <% space = Space.get(request.space_id) %>
-    <div class="card">
+    <div class="request card">
       <div class="card-body">
         Name: <%= space.name %><br>
         Date: <%= request.date %><br>
@@ -20,7 +20,7 @@
   <% @requests_against_my_spaces.each do |request| %>
     <% space = Space.get(request.space_id) %>
     <% user = User.get(request.user_id) %>
-    <div class="card">
+    <div class="request card">
       <div class="card-body">
         Space: <%= space.name %><br>
         Date: <%= request.date %><br>
