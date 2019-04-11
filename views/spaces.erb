@@ -4,6 +4,13 @@
 <div class="col-3">
   <a href="/spaces/new" class="float-right btn btn-primary">Add a new listing</a>
 </div>
+<div>
+  <form action="/spaces/filter" method="post">
+    <input type="date" name="start_date">
+    <input type="date" name="end_date">
+    <input type="submit" value="Filter">
+  </form>
+</div>
 <section id="available-spaces" class="col-12">
   <% @spaces.each do |space| %>
     <div class="space card">

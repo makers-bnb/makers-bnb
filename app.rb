@@ -62,6 +62,12 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
+  post '/spaces/filter' do
+    session[:start_date] = params[:start_date]
+    session[:end_date] = params[:end_date]
+    redirect '/spaces'
+  end
+
   get '/requests/new/:space_id' do
     @space = Space.get(params[:space_id])
     @confirmed_requests = Request.all(status: 'Confirmed',
