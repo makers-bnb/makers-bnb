@@ -9,6 +9,7 @@ html {
 body {
   background-image: url(../img/happy-family.webp);
   background-size: cover;
+  background-attachment: fixed;
 }
 
 header {
