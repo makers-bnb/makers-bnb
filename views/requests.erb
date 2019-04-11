@@ -7,10 +7,10 @@
       <% user = User.get(request.user_id) %>
       <div class="request card">
         <div class="card-body">
-          Space: <%= space.name %><br>
-          Date: <%= request.date %><br>
-          Status: <%= request.status %><br>
-          Requesting User: <%= user.email %><br>
+          <div class="request-space">Space: <%= space.name %></div>
+          <div class="request-date">Date: <%= request.date %></div>
+          <div class="request-status">Status: <%= request.status %></div>
+          <div class="request-user">Requesting User: <%= user.email %></div>
           <form action='/requests/<%= request.id %>' method='POST'>
             <button type="submit" class="btn btn-success" name='status' value="Accept booking">Accept booking</button>
             <button type="submit" class="btn btn-danger" name='status' value="Reject booking">Reject booking</button>
@@ -30,9 +30,9 @@
       <% space = Space.get(request.space_id) %>
       <div class="request card">
         <div class="card-body">
-          Name: <%= space.name %><br>
-          Date: <%= request.date %><br>
-          Status: <%= request.status %>
+          <div class="request-space">Name: <%= space.name %></div>
+          <div class="request-date">Date: <%= request.date %><div>
+          <div class="request-status">Status: <%= request.status %></div>
         </div>
       </div>
     <% end %>
