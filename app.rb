@@ -57,7 +57,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @spaces = Space.all
+    @spaces = Space.filter_spaces(session[:start_date], session[:end_date])
     @user = current_user
     erb :spaces
   end
