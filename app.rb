@@ -8,7 +8,7 @@ require_relative 'lib/user'
 require_relative 'app/connect_to_database'
 
 class MakersBnB < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_override
   register Sinatra::Flash
   include Sinatra::UsersHelpers
   include Sinatra::RequestsHelpers
@@ -94,7 +94,7 @@ class MakersBnB < Sinatra::Base
     redirect '/requests'
   end
 
-  get '/logout' do
+  delete '/sessions' do
     session.clear
     redirect '/sessions/new'
   end
