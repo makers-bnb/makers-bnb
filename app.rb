@@ -104,7 +104,12 @@ class MakersBnB < Sinatra::Base
     Pony.mail :to => params[:recommendee],
               :from => 'recommendation@makersbnb.co.uk',
               :subject => 'Welcome to Makers B&B',
-              :body => 'Your friend has recommended..'
+              :body => "Good day, your friend #{params[:recommender]} has seen something on our site and thought it might be of interest to you!
+              At Makers B&B we specialise in listing incredible holiday flats around which you can build the trip of a lifetime.
+
+              So check us out at www.makersbnb.co.uk.
+
+              We look forward to your visit"
     redirect '/spaces'
   end
 
