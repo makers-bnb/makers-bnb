@@ -16,7 +16,7 @@ header {
   width: 100%;
 }
 
-menu  {
+menu {
   margin: 0;
   padding: 10px;
 }
@@ -31,7 +31,16 @@ menu ul {
 menu li {
   float: right;
   margin-left: 20px;
+  border: 0;
 }
+
+menu .btn {
+  float: right;
+  margin-left: 20px;
+  padding: 0;
+  border: 0;
+}
+
 .card {
   background-color: rgba(255 ,255 ,255 , .92);
 }
