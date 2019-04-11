@@ -1,29 +1,23 @@
-<% unless @user.nil? %>
-<div class="alert alert-primary col-12">
-  User: <%= @user.email %>
+<div class="col-9">
+  <h2>Book a space</h2>
 </div>
-<% end %>
-
-<div class="col-12">
-  <h2>Available spaces</h2>
+<div class="col-3">
+  <a href="/spaces/new" class="float-right btn btn-primary">Add a new listing</a>
 </div>
-<div id="available-spaces" class="col-12">
-  <ul>
+<section id="available-spaces" class="col-12">
   <% @spaces.each do |space| %>
-    <%# <div class="card" style="width: 24rem;"> %>
-      <li class="space card">
-        <section class="card-body">
-          <h3><%= space.name %></h3>
-          <div class="space-details">
-            <section><%= space.description %></section>
-            <div>Price per night: £<%= space.price %></div>
-          </div>
-          <a class="btn btn-primary active" href="/requests/new/<%= space.id %>">Request to book</a>
-        </section>
-      </li>
+    <div class="space card">
+      <div class="card-body">
+        <h3><%= space.name %></h3>
+        <div class="space-details">
+          <section><%= space.description %></section>
+          <div>Price per night: £<%= space.price %></div>
+        </div>
+        <a class="btn btn-primary active" href="/requests/new/<%= space.id %>">Request to book</a>
+      </div>
+    </div>
   <% end %>
-  </ul>
-</div>
+</section>
 
 <form action="/email" method="get">
 <div class="form-group2">
