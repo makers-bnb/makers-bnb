@@ -11,6 +11,6 @@ feature 'Booked dates are unavailable' do
     click_link('Log out')
     user_sign_up('renter2@renter', 'password')
     click_link('Request to book')
-    page.should have_selector('#request_date_picker[data-booked-dates="2020-05-03"]')
+    expect(page).to have_selector('#request_date_picker[data-booked-dates="2020-05-03"]')
   end
 end

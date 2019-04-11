@@ -14,7 +14,8 @@ def user_log_in(email, password)
 end
 
 def add_space(name, description, price, start_date = '2019-04-20', end_date = '2099-04-20')
-  visit '/spaces/new'
+  visit '/spaces'
+  click_link "Add a new listing"
   fill_in 'name', with: name
   fill_in 'description', with: description
   fill_in 'price', with: price
