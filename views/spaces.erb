@@ -1,8 +1,33 @@
-<div class="col-9">
-  <h2>Book a space</h2>
+<div id="request-space-header" class="row col-12 no-gutters">
+  <div class="col-9">
+    <h2>Book a space</h2>
+  </div>
+  <div class="col-3">
+    <a href="/spaces/new" class="float-right btn btn-primary">Add a new listing</a>
+  </div>
 </div>
-<div class="col-3">
-  <a href="/spaces/new" class="float-right btn btn-primary">Add a new listing</a>
+<div id="availability-filter-dates" class='col-12 card-body'>
+  <h5>Filter Spaces for your desired dates:</h5>
+  <div class="row no-gutters">
+    <form class='form-inline' action="/spaces/filter" method="post">
+      <div class="form-group">
+        <h7 class="inline-tag">From: </h7>
+        <input class='form-control' type="date" name="start_date">
+        <h7 class="inline-tag">To: </h7>
+        <input class='form-control' type="date" name="end_date">
+        <input class="btn btn-primary" type="submit" value="Filter">
+      </div>
+    </form>
+    <form class='form-inline' action="/spaces/filter" method="post">
+      <input type="hidden" name="_method" value='DELETE'>
+      <input class="btn btn-primary" type="submit" value="Clear">
+    </form>
+  <% if !@filter_message.nil? %>
+    <div id="availability-filter-message" class="col-12 no-gutters">
+      <h7><%= @filter_message %></h7>
+    </div>
+  <% end %>
+  </div>
 </div>
 <section id="available-spaces" class="col-12">
   <% @spaces.each do |space| %>
@@ -18,13 +43,3 @@
     </div>
   <% end %>
 </section>
-
-<form action="/email" method="get">
-<div class="form-group2">
-  <label for="recommendation">Have you spotted something here that could interest a friend, colleague or relative?</label><br>
-  <input type="email" class="form-control2" id="recommendee" name="recommendee" placeholder="Insert valid email address" name="recommendee">
-  <input type="text" class="form-control2" id="recommender" name="recommender" placeholder="Your name for your friend" name="recommender"><br>
-  <input type="submit" value="Recommend!">
-  <label id="emailHelp" class="form-text text-bold">Your contact's details are protected by our Privacy Policy</label>
-</div>
-</form>

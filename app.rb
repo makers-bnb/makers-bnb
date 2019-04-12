@@ -1,8 +1,9 @@
 # require 'pony'
 require 'sinatra/base'
 require 'sinatra/flash'
-require_relative 'app/helpers/users'
+require_relative 'app/helpers/filters'
 require_relative 'app/helpers/requests'
+require_relative 'app/helpers/users'
 require_relative 'lib/mail_handler'
 require_relative 'lib/notify'
 require_relative 'lib/request'
@@ -15,6 +16,7 @@ class MakersBnB < Sinatra::Base
   register Sinatra::Flash
   include Sinatra::UsersHelpers
   include Sinatra::RequestsHelpers
+  include Sinatra::FilterHelpers
 
   def initialize(app = nil, mail_handler_class = MailHandler)
     @notify = Notify.new(mail_handler_class)
@@ -66,9 +68,22 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @spaces = Space.all
+    @spaces = Space.filter_spaces(session[:start_date], session[:end_date])
+    @filter_message = generate_filter_message
     @user = current_user
     erb :spaces
+  end
+
+  post '/spaces/filter' do
+    session[:start_date] = params[:start_date]
+    session[:end_date] = params[:end_date]
+    redirect '/spaces'
+  end
+
+  delete '/spaces/filter' do
+    session[:start_date] = nil
+    session[:end_date] = nil
+    redirect '/spaces'
   end
 
   get '/requests/new/:space_id' do

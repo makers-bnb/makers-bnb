@@ -1,4 +1,4 @@
-h1, h2, h3 {
+h1, h2, h3, h5, h7 {
   font-family: 'Alfa Slab One', cursive;
 }
 
@@ -13,7 +13,7 @@ body {
 }
 
 header {
-  margin: 20px 0; 
+  margin: 20px 0;
   width: 100%;
 }
 
@@ -67,4 +67,30 @@ menu .btn {
 
 .space.card, .request.card {
   margin-bottom: 20px;
+}
+
+.inline-tag {
+  padding-right: 5px;
+}
+
+#availability-filter-dates {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+#availability-filter-message {
+  margin: 5px;
+
+}
+#availability-filter-dates input {
+  margin-right: 5px;
+}
+#availability-filter-dates div {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+#request-space {
+  background: rgba(255, 255, 255, 0.5);
 }
