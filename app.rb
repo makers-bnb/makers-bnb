@@ -37,7 +37,7 @@ class MakersBnB < Sinatra::Base
                        "Can't help you with that, sorry :("
       redirect '/'
     end
-    # @notify.send_welcome_email(user)
+    @notify.send_welcome_email(user)
     session[:user_id] = user.id
     flash[:success] = "Hello #{user.email}."
     redirect '/spaces'
