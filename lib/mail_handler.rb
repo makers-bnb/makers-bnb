@@ -2,14 +2,12 @@ require 'pony'
 require 'dotenv/load'
 
 class MailHandler
-  # def initialize
-    @@user = ENV['EMAIL_USER']
-    @@smtp_server = ENV['EMAIL_SMTP_SERVER']
-    @@port = ENV['EMAIL_PORT']
-    @@password = ENV['EMAIL_PASSWORD']
-    @@suppress_emails = ENV['EMAIL_SUPPRESS'] == "true"
-    @@email_path = File.join(File.dirname(__FILE__), '../emails')
-  # end
+  @@user = ENV['EMAIL_USER']
+  @@smtp_server = ENV['EMAIL_SMTP_SERVER']
+  @@port = ENV['EMAIL_PORT']
+  @@password = ENV['EMAIL_PASSWORD']
+  @@suppress_emails = ENV['EMAIL_SUPPRESS'] == "true"
+  @@email_path = File.join(File.dirname(__FILE__), '../emails')
 
   def self.send(email_address, message)
     email_template = "#{@@email_path}/#{message}.txt"

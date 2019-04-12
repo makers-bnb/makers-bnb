@@ -1,4 +1,3 @@
-# require 'pony'
 require 'sinatra/base'
 require 'sinatra/flash'
 require_relative 'app/helpers/filters'
