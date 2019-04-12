@@ -33,6 +33,7 @@
             <form action="/sessions" method="post">
               <input type='submit' value="Log out" class="btn btn-link"/>
               <input type='hidden' name='_method' value ="DELETE"/>
+            </form>
           </li>
           <% end %>
           <% if not_logged_in? %>
@@ -64,4 +65,3 @@
   <script src="/js/interface.js"></script>
 </body>
 </html>
-
