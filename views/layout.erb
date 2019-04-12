@@ -29,8 +29,10 @@
           <li>
             <a href="/spaces">Spaces</a>
           </li>
-          <li>
-            <a href="/logout">Log out</a>
+          <li class="btn">
+            <form action="/sessions" method="post">
+              <input type='submit' value="Log out" class="btn btn-link"/>
+              <input type='hidden' name='_method' value ="DELETE"/>
           </li>
           <% end %>
           <% if not_logged_in? %>

@@ -6,7 +6,7 @@ module Sinatra
     def booked_dates_string(confirmed_requests)
       return "" if confirmed_requests.length.zero?
 
-      return confirmed_requests.map { |request| request.date }.join(" ")
+      return confirmed_requests.sort.map { |request| request.date }.join(" ")
     end
   end
 
