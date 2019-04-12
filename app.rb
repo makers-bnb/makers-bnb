@@ -49,6 +49,12 @@ class MakersBnB < Sinatra::Base
     erb :'spaces/new'
   end
 
+  get '/spaces/myspaces' do
+    @user = current_user
+    @spaces = Space.all(:user => @user)
+    erb :'spaces/myspaces'
+  end
+
   post '/spaces' do
     user = current_user
     space = Space.create(name: params[:name],

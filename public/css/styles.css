@@ -51,10 +51,10 @@ menu .btn {
   width: 30rem;
 }
 
-#available-spaces ul {
+#listed-spaces ul {
   padding: 0;
 }
-#available-spaces li {
+#listed-spaces li {
   list-style: none;
 }
 .space {
