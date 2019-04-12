@@ -7,7 +7,9 @@
 
 1. Clone repo
 2. `bundle install`
-3. Copy `.env-example` to `.env` and update it with your Postgres username
+3. Copy `.env-example` to `.env`
+    - update it with your Postgres username
+    - if you want to send out emails update it with your email details, and set `EMAIL_SUPPRESS` to 'false'. Refer to [Pony's docs](https://github.com/benprew/pony) for help.
 4. Create your databases, `makers_bnb` and `makers_bnb_test`
 5. Start the server with `rackup`
 6. Navigate to [localhost:9292](http://localhost:9292/)
