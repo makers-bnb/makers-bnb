@@ -30,4 +30,3 @@ def make_request(date)
   fill_in 'booking_date', with: date
   click_button 'Request to book'
 end
-
