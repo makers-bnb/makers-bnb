@@ -34,12 +34,12 @@ feature 'User can filter spaces by date' do
     fill_in 'start_date', with: '2019-04-01'
     fill_in 'end_date', with: '2019-04-10'
     click_button 'Filter'
-    expect(page).to have_content "Showing Spaces available between 2019-04-01 and 2019-04-10"
+    expect(page).to have_content "Showing spaces available between Monday, 01 Apr 2019 and Wednesday, 10 Apr 2019"
     fill_in 'end_date', with: '2019-04-10'
     click_button 'Filter'
-    expect(page).to have_content "Showing Spaces available up to 2019-04-10"
+    expect(page).to have_content "Showing spaces available up to Wednesday, 10 Apr 2019"
     fill_in 'start_date', with: '2019-04-01'
     click_button 'Filter'
-    expect(page).to have_content "Showing Spaces available from 2019-04-01"
+    expect(page).to have_content "Showing spaces available from Monday, 01 Apr 2019"
   end
 end
