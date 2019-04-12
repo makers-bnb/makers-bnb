@@ -11,9 +11,6 @@ feature 'User can add listing' do
               '2019-04-30',
               '2099-04-30'
     expect(page).to have_content "New listing created"
-    expect(page).to have_content "Bob's Bunker"
-    expect(page).to have_content 'This is the description of my flat'
-    expect(page).to have_content "50"
   end
 
   scenario "It doesn't create the space if the user leaves out name" do
@@ -24,9 +21,6 @@ feature 'User can add listing' do
               '2099-04-30'
     expect(page).to have_content "Could not create listing"
     click_link "Spaces"
-    expect(page).not_to have_content "Bob's Bunker"
-    expect(page).not_to have_content 'This is the description of my flat'
-    expect(page).not_to have_content "50"
   end
 
   scenario "It doesn't create the space if the user leaves out description" do
@@ -37,9 +31,6 @@ feature 'User can add listing' do
               '2099-04-30'
     expect(page).to have_content "Could not create listing"
     click_link "Spaces"
-    expect(page).not_to have_content "Bob's Bunker"
-    expect(page).not_to have_content 'This is the description of my flat'
-    expect(page).not_to have_content "50"
   end
 
   scenario "It doesn't create the space if the user leaves out price" do
@@ -50,9 +41,6 @@ feature 'User can add listing' do
               '2099-04-30'
     expect(page).to have_content "Could not create listing"
     click_link "Spaces"
-    expect(page).not_to have_content "Bob's Bunker"
-    expect(page).not_to have_content 'This is the description of my flat'
-    expect(page).not_to have_content "50"
   end
 
   scenario "It doesn't create the space if the user leaves out start date" do
@@ -63,9 +51,6 @@ feature 'User can add listing' do
               '2099-04-30'
     expect(page).to have_content "Could not create listing"
     click_link "Spaces"
-    expect(page).not_to have_content "Bob's Bunker"
-    expect(page).not_to have_content 'This is the description of my flat'
-    expect(page).not_to have_content "50"
   end
 
   scenario "It doesn't create the space if the user leaves out end date" do
@@ -76,8 +61,5 @@ feature 'User can add listing' do
               ''
     expect(page).to have_content "Could not create listing"
     click_link "Spaces"
-    expect(page).not_to have_content "Bob's Bunker"
-    expect(page).not_to have_content 'This is the description of my flat'
-    expect(page).not_to have_content "50"
   end
 end

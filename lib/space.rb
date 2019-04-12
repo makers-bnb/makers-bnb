@@ -13,17 +13,11 @@ class Space
 
   belongs_to :user
 
-  def self.filter_spaces(start_date, end_date)
+  def self.filter_spaces(start_date, end_date, user)
     start_date = start_date.nil? || start_date.empty? ? Date.new(1900, 01, 01) : Date.strptime(start_date, "%Y-%m-%d")
     end_date = end_date.nil? || end_date.empty? ? Date.new(2200, 01, 01) : Date.strptime(end_date, "%Y-%m-%d")
-    spaces = Space.all
-    filtered_spaces = []
-    spaces.each do |space|
-      if space.start_date > end_date || space.end_date < start_date
-      else
-        filtered_spaces << space
-      end
-    end
-    return filtered_spaces
+    spaces_outside_range = Space.all(:start_date.gt => end_date) + Space.all(:end_date.lt => start_date)
+    user_spaces = Space.all(:user => user)
+    return Space.all - spaces_outside_range - user_spaces
   end
 end

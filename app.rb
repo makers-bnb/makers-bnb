@@ -60,9 +60,9 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @spaces = Space.filter_spaces(session[:start_date], session[:end_date])
-    @filter_message = generate_filter_message
     @user = current_user
+    @spaces = Space.filter_spaces(session[:start_date], session[:end_date], @user)
+    @filter_message = generate_filter_message
     erb :spaces
   end
 
