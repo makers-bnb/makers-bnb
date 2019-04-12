@@ -17,7 +17,7 @@ class MakersBnB < Sinatra::Base
   include Sinatra::RequestsHelpers
 
   def initialize(app = nil, mail_handler_class = MailHandler)
-    @notify = Notify.new(mail_handler_class.new)
+    @notify = Notify.new(mail_handler_class)
     super(app)
   end
 
@@ -37,7 +37,7 @@ class MakersBnB < Sinatra::Base
                        "Can't help you with that, sorry :("
       redirect '/'
     end
-    @notify.send_welcome_email(user)
+    # @notify.send_welcome_email(user)
     session[:user_id] = user.id
     flash[:success] = "Hello #{user.email}."
     redirect '/spaces'
