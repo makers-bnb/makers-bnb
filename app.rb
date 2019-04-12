@@ -1,8 +1,10 @@
-require 'pony'
+# require 'pony'
 require 'sinatra/base'
 require 'sinatra/flash'
 require_relative 'app/helpers/users'
 require_relative 'app/helpers/requests'
+require_relative 'lib/mail_handler'
+require_relative 'lib/notify'
 require_relative 'lib/request'
 require_relative 'lib/space'
 require_relative 'lib/user'
@@ -14,8 +16,31 @@ class MakersBnB < Sinatra::Base
   include Sinatra::UsersHelpers
   include Sinatra::RequestsHelpers
 
+  def initialize(app = nil, mail_handler_class = MailHandler)
+    @notify = Notify.new(mail_handler_class.new)
+    super(app)
+  end
+
   get '/' do
     erb :index
+  end
+
+  post '/user' do
+    if params[:email] == '' || params[:password] == ''
+      flash[:danger] = "Could not create user. All fields are required."
+      redirect '/'
+    end
+    user = User.create(email: params[:email],
+                       password: params[:password])
+    if user.id.nil?
+      flash[:danger] = "User already exists. Have you forgotten your password? "\
+                       "Can't help you with that, sorry :("
+      redirect '/'
+    end
+    @notify.send_welcome_email(user)
+    session[:user_id] = user.id
+    flash[:success] = "Hello #{user.email}."
+    redirect '/spaces'
   end
 
   get '/spaces/new' do
@@ -37,23 +62,6 @@ class MakersBnB < Sinatra::Base
     else
       flash[:success] = "New listing created."
     end
-    redirect '/spaces'
-  end
-
-  post '/user' do
-    if params[:email] == '' || params[:password] == ''
-      flash[:danger] = "Could not create user. All fields are required."
-      redirect '/'
-    end
-    user = User.create(email: params[:email],
-                       password: params[:password])
-    if user.id.nil?
-      flash[:danger] = "User already exists. Have you forgotten your password? "\
-                       "Can't help you with that, sorry :("
-      redirect '/'
-    end
-    session[:user_id] = user.id
-    flash[:success] = "Hello #{user.email}."
     redirect '/spaces'
   end
 
@@ -115,19 +123,6 @@ class MakersBnB < Sinatra::Base
   get '/sessions/new' do
     @user = current_user
     erb :'sessions/new'
-  end
-
-  get '/email' do
-    Pony.mail :to => params[:recommendee],
-              :from => 'recommendation@makersbnb.co.uk',
-              :subject => 'Welcome to Makers B&B',
-              :body => "Good day, your friend #{params[:recommender]} has seen something on our site and thought it might be of interest to you!
-              At Makers B&B we specialise in listing incredible holiday flats around which you can build the trip of a lifetime.
-
-              So check us out at www.makersbnb.co.uk.
-
-              We look forward to your visit"
-    redirect '/spaces'
   end
 
   run! if app_file == $0
