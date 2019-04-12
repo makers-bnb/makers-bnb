@@ -3,10 +3,17 @@ describe Notify do
   let(:mail_handler) { double :mail_handler }
   let(:user) { double :user, email: 'my_email' }
 
-  describe '#send_welcome_email' do
+  describe '#welcome_new_user' do
     it 'sends an email to the user' do
       expect(mail_handler).to receive(:send).with('my_email', 'welcome')
-      subject.send_welcome_email(user)
+      subject.welcome_new_user(user)
+    end
+  end
+
+  describe '#notify_landlord_of_new_request' do
+    it 'sends an email to the user' do
+      expect(mail_handler).to receive(:send).with('my_email', 'new_request')
+      subject.notify_landlord_of_new_request(user)
     end
   end
 end
