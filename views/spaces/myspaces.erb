@@ -1,0 +1,22 @@
+<div id="request-space-header" class="row col-12 no-gutters">
+  <div class="col-9">
+    <h2>My spaces</h2>
+  </div>
+  <div class="col-3">
+    <a href="/spaces/new" class="float-right btn btn-primary">Add a new listing</a>
+  </div>
+</div>
+
+<section id="listed-spaces" class="col-12">
+  <% @spaces.each do |space| %>
+    <div class="space card">
+      <div class="card-body">
+        <h3><%= space.name %></h3>
+        <div class="space-details">
+          <section><%= space.description %></section>
+          <div>Price per night: £<%= space.price %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
