@@ -6,7 +6,7 @@ feature 'Request a booking' do
     click_button 'Log out'
     user_sign_up('renter@renter', 'password')
     click_link 'Request to book'
-    page.should have_selector('#request_date_picker[data-availability-start="2019-04-20"]')
-    page.should have_selector('#request_date_picker[data-availability-end="2019-04-29"]')
+    expect(page).to have_selector('#request_date_picker[data-availability-start="2019-04-20"]')
+    expect(page).to have_selector('#request_date_picker[data-availability-end="2019-04-29"]')
   end
 end

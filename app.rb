@@ -34,8 +34,8 @@ class MakersBnB < Sinatra::Base
     user = User.create(email: params[:email],
                        password: params[:password])
     if user.id.nil?
-      flash[:danger] = "User already exists. Have you forgotten your password? "\
-                       "Can't help you with that, sorry :("
+      flash[:danger] = "User already exists. Have you forgotten your "\
+                       "password? Can't help you with that, sorry :("
       redirect '/'
     end
     @notify.welcome_new_user(user)
