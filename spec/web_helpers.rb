@@ -31,12 +31,3 @@ def make_request(date)
   click_button 'Request to book'
 end
 
-def approve_request
-  click_link 'Requests'
-  click_button 'Accept booking'
-end
-
-def reject_request
-  click_link 'Requests'
-  click_button 'Reject booking'
-end
