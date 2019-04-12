@@ -1,6 +1,6 @@
 You've got a new request for one of your listings.
 
-Log your sorry ass in at localhost:9292/sessions/new
+Log your sorry ass in at localhost:9292/sessions/new and check it out.
 
 Kind Regards
 - Makers BnB
