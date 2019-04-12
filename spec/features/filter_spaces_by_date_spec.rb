@@ -28,4 +28,18 @@ feature 'User can filter spaces by date' do
     expect(page).to have_content "Paul's Shed"
     expect(page).to have_content "Paul's Tent"
   end
+  scenario 'a message is displayed based on filter inputs' do
+    user_sign_up('billyrenter@renters.com', 'love2rent')
+    visit '/spaces'
+    fill_in 'start_date', with: '2019-04-01'
+    fill_in 'end_date', with: '2019-04-10'
+    click_button 'Filter'
+    expect(page).to have_content "Showing Spaces available between 2019-04-01 and 2019-04-10"
+    fill_in 'end_date', with: '2019-04-10'
+    click_button 'Filter'
+    expect(page).to have_content "Showing Spaces available up to 2019-04-10"
+    fill_in 'start_date', with: '2019-04-01'
+    click_button 'Filter'
+    expect(page).to have_content "Showing Spaces available from 2019-04-01"
+  end
 end
