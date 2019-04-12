@@ -1,4 +1,4 @@
 class MailHandlerDouble
-  def send(email_address, message)
+  def self.send(email_address, message)
   end
 end
