@@ -5,7 +5,11 @@ class Notify
     @mail_handler = mail_handler
   end
 
-  def send_welcome_email(user)
+  def welcome_new_user(user)
     @mail_handler.send(user.email, 'welcome')
+  end
+
+  def notify_landlord_of_new_request(user)
+    @mail_handler.send(user.email, 'new_request')
   end
 end

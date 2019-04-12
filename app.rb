@@ -38,7 +38,7 @@ class MakersBnB < Sinatra::Base
                        "Can't help you with that, sorry :("
       redirect '/'
     end
-    @notify.send_welcome_email(user)
+    @notify.welcome_new_user(user)
     session[:user_id] = user.id
     flash[:success] = "Hello #{user.email}."
     redirect '/spaces'
@@ -98,9 +98,11 @@ class MakersBnB < Sinatra::Base
   post '/requests' do
     @space = Space.get(params[:space_id])
     @user = current_user
+    landlord = User.get(@space.user_id)
     Request.create(space: @space,
                    user: @user,
                    date: params[:booking_date])
+    @notify.notify_landlord_of_new_request(landlord)
     redirect '/requests'
   end
 
